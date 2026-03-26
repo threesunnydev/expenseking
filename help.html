@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExpenseKing — Help Center</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #2a7ce8;
+      --yellow: #f5c518;
+      --dark: #0d1117;
+      --dark2: #161b22;
+      --card: #1c2230;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: #30363d;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f7f8fc;
+      color: #1a1a2e;
+      line-height: 1.7;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--dark);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-brand .e { color: var(--blue); }
+    .nav-brand .k { color: var(--yellow); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Page Hero ── */
+    .page-hero {
+      background: var(--dark);
+      padding: 56px 24px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      line-height: 1.15;
+    }
+
+    .page-hero h1 .e { color: var(--blue); }
+    .page-hero h1 .k { color: var(--yellow); }
+
+    .page-hero p {
+      margin-top: 12px;
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    /* ── Help Section Card ── */
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 28px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid #eaeef4;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+    }
+
+    .section h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section h2 .icon {
+      font-size: 1.2rem;
+    }
+
+    /* ── Steps ── */
+    .step {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--blue);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .step p strong {
+      color: #1a1a2e;
+    }
+
+    /* ── Tip ── */
+    .tip {
+      background: #eef4fd;
+      border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      color: #555;
+      margin-top: 12px;
+    }
+
+    .tip strong {
+      color: var(--blue);
+    }
+
+    /* ── FAQ Items ── */
+    .faq-item {
+      border-bottom: 1px solid #f0f0f0;
+      padding: 12px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .faq-item h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .faq-item a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .faq-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Contact link ── */
+    .section a.contact-link {
+      color: var(--blue);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .section a.contact-link:hover {
+      text-decoration: underline;
+    }
+
+    .section > p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      margin: 0 12px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    footer .footer-links { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a class="nav-brand" href="index.html"><span class="e">Expense</span><span class="k">King</span></a>
+  <div class="nav-links">
+    <a href="help.html" class="active">Help</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <h1><span class="e">Expense</span><span class="k">King</span> Help Center</h1>
+  <p>Everything you need to get the most out of your app.</p>
+</div>
+
+<div class="container">
+
+  <!-- Getting Started -->
+  <div class="section">
+    <h2><span class="icon">👋</span> Getting Started</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <p><strong>Add a wallet</strong> — Go to the Wallets tab and tap <strong>+</strong>. Give it a name (e.g. Cash, GCash, Bank) and set your starting balance.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <p><strong>Add categories</strong> — Go to the Categories tab and tap <strong>+</strong>. Pick an icon and color that makes it easy to identify.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <p><strong>Log your first expense</strong> — Tap the <strong>+</strong> button on the Expenses screen. Enter the amount, pick a category and wallet, and save.</p>
+    </div>
+    <div class="tip"><strong>Tip:</strong> You're taken straight to the category profile after creating a category — that's a good time to set a budget right away.</div>
+  </div>
+
+  <!-- Wallets -->
+  <div class="section">
+    <h2><span class="icon">👛</span> Wallets</h2>
+    <div class="faq-item">
+      <h3>How do I add money to a wallet?</h3>
+      <p>Open the wallet, then tap <strong>Deposit / Adjust</strong>. You can add funds, record a withdrawal, or correct the balance.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why does my balance change when I log an expense?</h3>
+      <p>Every expense is deducted from the wallet you selected. Your wallet balance always reflects your actual available funds.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What balance is shown in the header?</h3>
+      <p>The header shows your <strong>main wallet's</strong> balance. You can set a wallet as your main one from its profile. Tap the header to open that wallet directly.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I have multiple wallets?</h3>
+      <p>Yes — add as many as you need. The Wallets tab shows each wallet's balance and the total across all of them.</p>
+    </div>
+  </div>
+
+  <!-- Categories & Budgets -->
+  <div class="section">
+    <h2><span class="icon">🗂️</span> Categories & Budgets</h2>
+    <div class="faq-item">
+      <h3>How do I set a budget for a category?</h3>
+      <p>Open the category profile and tap <strong>Set Budget</strong>. Choose a period (Daily, Weekly, or Monthly), enter your limit, and save.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What's the difference between Pace tracking and Total tracking?</h3>
+      <p><strong>Pace</strong> — tracks your daily spending rate against an expected pace. Best for categories you spend in regularly (food, transport).</p>
+      <p style="margin-top:6px"><strong>Total</strong> — just tracks if your period total stays within budget. Best for monthly bills or one-time payments.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What does the orange marker on the budget bar mean?</h3>
+      <p>It shows where your spending <em>should</em> be right now based on how far through the period you are. If your bar is to the left of the marker, you're underspending. To the right — you're ahead of pace.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What happens to expenses if I delete a category?</h3>
+      <p>They're moved to <strong>Uncategorized</strong> — no spending history is lost.</p>
+    </div>
+  </div>
+
+  <!-- Spending Momentum -->
+  <div class="section">
+    <h2><span class="icon">📈</span> Spending Momentum</h2>
+    <div class="faq-item">
+      <h3>What is Spending Momentum?</h3>
+      <p>It's a quick signal that tells you whether you're spending more or less than you normally do in a category — without you having to do any math. Think of it as your personal spending pulse.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What do the messages mean?</h3>
+      <p><strong>First spending today</strong> — you've just logged your first expense in this category today.</p>
+      <p style="margin-top:6px"><strong>About the same as usual</strong> — today's spending is in line with your normal pattern. Nothing to worry about.</p>
+      <p style="margin-top:6px"><strong>X% lower than usual</strong> — you're spending less than usual today. A good sign if you're trying to cut back.</p>
+      <p style="margin-top:6px"><strong>X% higher than usual</strong> — you're spending more than usual today. Worth keeping an eye on.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why does it say "No clear pattern yet"?</h3>
+      <p>You're still building history in this category. Keep logging and momentum will kick in soon.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does it show for budgeted categories?</h3>
+      <p>No — if a category has a budget set, the budget progress bar takes over. It gives you more specific information than momentum alone.</p>
+    </div>
+  </div>
+
+  <!-- Spending Reminders -->
+  <div class="section">
+    <h2><span class="icon">🔔</span> Spending Reminders</h2>
+    <div class="faq-item">
+      <h3>How do I set up daily reminders?</h3>
+      <p>Go to <strong>Settings → Spending Reminders</strong>, toggle reminders on, then tap <strong>Add Reminder Time</strong> to pick your preferred time.</p>
+    </div>
+    <div class="faq-item">
+      <h3>The notification shows up but doesn't pop on screen.</h3>
+      <p>Go to <strong>Settings → Apps → ExpenseKing → Notifications → Spending Reminders</strong> and make sure <strong>Pop on screen</strong> is enabled.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What do the notification buttons do?</h3>
+      <p><strong>Add Expense</strong> opens the add expense form directly. <strong>Remind Later</strong> re-schedules a reminder 30 minutes from now.</p>
+    </div>
+  </div>
+
+  <!-- Insights -->
+  <div class="section">
+    <h2><span class="icon">💡</span> Insights</h2>
+    <div class="faq-item">
+      <h3>What does the Insights screen show?</h3>
+      <p>A daily spending chart for the selected period, your top spending categories, and overall trends.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I see spending for a specific day?</h3>
+      <p>Yes — tap any dot on the chart and the Top Categories list updates to show only that day's breakdown.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Tapping a category in Insights — where does it go?</h3>
+      <p>It opens that category's full profile with its chart, stats, and budget details.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <h2><span class="icon">❓</span> Common Questions</h2>
+    <div class="faq-item">
+      <h3>Is my data stored online?</h3>
+      <p>Your expense data is stored locally on your device only. No account, no cloud, no personal financial data ever leaves your phone. The app does display ads via Google AdMob, which may collect device and usage information as described in our <a href="https://expenseking2026-cmyk.github.io/expenseking-privacy/">Privacy Policy</a>.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What happens if I uninstall the app?</h3>
+      <p>Your data will be lost since it's stored locally. We recommend taking a screenshot of your key stats before uninstalling.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I change the app theme?</h3>
+      <p>Go to <strong>Settings</strong> and toggle between Light, Dark, or System default.</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="section">
+    <h2><span class="icon">✉️</span> Still need help?</h2>
+    <p>Reach out to us at <a href="mailto:support@threesunnydev.com" class="contact-link">support@threesunnydev.com</a> and we'll get back to you as soon as we can.</p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <a href="help.html">Help Center</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
+  <p>© 2026 ThreeSunnyDev — Bright ideas into reality.</p>
+</footer>
+
+</body>
+</html>

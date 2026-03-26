@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExpenseKing — Privacy Policy</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #2a7ce8;
+      --yellow: #f5c518;
+      --dark: #0d1117;
+      --dark2: #161b22;
+      --card: #1c2230;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: #30363d;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f7f8fc;
+      color: #1a1a2e;
+      line-height: 1.7;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--dark);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-brand .e { color: var(--blue); }
+    .nav-brand .k { color: var(--yellow); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Page Hero ── */
+    .page-hero {
+      background: var(--dark);
+      padding: 56px 24px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      line-height: 1.15;
+    }
+
+    .page-hero p {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Intro card ── */
+    .intro-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid #eaeef4;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    /* ── Policy Section Card ── */
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid #eaeef4;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+    }
+
+    .section h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eaeef4;
+    }
+
+    .section p {
+      font-size: 0.92rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section ul {
+      list-style: none;
+      margin: 8px 0 10px;
+      padding: 0;
+    }
+
+    .section ul li {
+      font-size: 0.92rem;
+      color: #444;
+      padding: 4px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .section ul li::before {
+      content: '•';
+      color: var(--blue);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Note / Tip box ── */
+    .note {
+      background: #eef4fd;
+      border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      color: #555;
+      margin: 12px 0;
+    }
+
+    .note strong { color: var(--blue); }
+
+    /* ── Links ── */
+    .section a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .section a:hover { text-decoration: underline; }
+
+    /* ── Contact highlight ── */
+    .contact-email {
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .contact-email:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      margin: 0 12px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    footer .footer-links { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a class="nav-brand" href="index.html"><span class="e">Expense</span><span class="k">King</span></a>
+  <div class="nav-links">
+    <a href="help.html">Help</a>
+    <a href="privacy-policy.html" class="active">Privacy Policy</a>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <h1>Privacy Policy</h1>
+  <p>Last updated: March 27, 2026</p>
+</div>
+
+<div class="container">
+
+  <!-- Intro -->
+  <div class="intro-card">
+    Thank you for using ExpenseKing. Your privacy is important to us. This Privacy Policy explains how information is handled when you use the application.
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <h2>1. Information You Enter in the App</h2>
+    <p>ExpenseKing allows you to record and manage personal financial information such as:</p>
+    <ul>
+      <li>Expenses</li>
+      <li>Categories</li>
+      <li>Wallet balances</li>
+      <li>Transaction notes</li>
+      <li>App preferences</li>
+    </ul>
+    <p>Your financial data is not collected by the developer and is not transmitted to any external servers.</p>
+    <p>All data you enter into the app is stored locally on your device only. The developer of ExpenseKing does not have access to your financial data.</p>
+    <div class="note">
+      <strong>Note:</strong> While your financial data stays entirely on-device, the app uses Google AdMob for advertising, which may collect certain technical data as described in Section 4.
+    </div>
+    <p>If you choose to export your data (for example via CSV export or sharing features), the data will only be shared through your device's built-in sharing tools and only when you explicitly initiate that action.</p>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section">
+    <h2>2. Local Data Storage</h2>
+    <p>All app data is stored locally on your device using on-device storage (SQLite database). This means:</p>
+    <ul>
+      <li>Your financial data remains on your device</li>
+      <li>No developer-operated servers store your financial information</li>
+      <li>No user accounts or authentication are required</li>
+      <li>The developer cannot access your stored data</li>
+    </ul>
+    <p>If you uninstall the application, your stored data may also be removed depending on your device's operating system.</p>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section">
+    <h2>3. Notifications</h2>
+    <p>The app may request permission to send local notifications to remind you to log expenses.</p>
+    <p>These reminders are scheduled entirely on your device using local notification features. No notification data is sent to external servers and no remote push notification service is used.</p>
+    <p>Notification scheduling information remains stored locally on your device.</p>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section">
+    <h2>4. Advertising</h2>
+    <p>ExpenseKing displays advertisements provided by Google through Google AdMob.</p>
+    <p>AdMob may automatically collect certain information to provide and improve advertising services. This may include:</p>
+    <ul>
+      <li>Device identifiers</li>
+      <li>Advertising identifiers</li>
+      <li>Approximate location information</li>
+      <li>Interaction with advertisements</li>
+    </ul>
+    <p>This information is collected directly by Google and is governed by Google's own privacy policies.</p>
+    <p>The app is configured to request non-personalized advertisements only. This means AdMob serves ads without using behavioral or interest-based targeting tied to your profile.</p>
+    <p>For more information, please review Google's Privacy Policy:<br>
+    <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
+    <p>You can also learn more about how Google uses information from apps that use its services here:<br>
+    <a href="https://policies.google.com/technologies/partner-sites" target="_blank">https://policies.google.com/technologies/partner-sites</a></p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section">
+    <h2>5. Third-Party Services</h2>
+    <p>The app uses the following third-party service:</p>
+    <ul>
+      <li>Google AdMob (for displaying advertisements)</li>
+    </ul>
+    <p>No analytics services, crash reporting tools, or other third-party tracking SDKs are used in the app.</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section">
+    <h2>6. Permissions</h2>
+    <p>The app may request the following device permission:</p>
+    <ul>
+      <li><strong>Notifications</strong> – Used to schedule optional spending reminder notifications that help you remember to log expenses.</li>
+    </ul>
+    <p>Notification permissions are optional and can be disabled at any time through your device settings.</p>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="section">
+    <h2>7. Children's Privacy</h2>
+    <p>ExpenseKing is not directed toward children under the age of 13 and does not knowingly collect personal information from children.</p>
+    <p>If you believe that a child has provided personal information through the app, please contact us and we will take appropriate steps to address the situation.</p>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="section">
+    <h2>8. Changes to This Privacy Policy</h2>
+    <p>This Privacy Policy may be updated from time to time. Any changes will be posted within the app or on the application's listing page.</p>
+    <p>You are advised to review this Privacy Policy periodically for any updates.</p>
+  </div>
+
+  <!-- Section 9 -->
+  <div class="section">
+    <h2>9. Revoking Consent</h2>
+    <p>If you previously consented to personalized advertising and wish to withdraw that consent, you can do so at any time by:</p>
+    <ul>
+      <li>Resetting your device's Advertising ID — go to your device <strong>Settings → Privacy → Ads → Reset Advertising ID</strong></li>
+      <li>Uninstalling the application</li>
+      <li>Contacting us at <a href="mailto:expenseking2026@gmail.com" class="contact-email">expenseking2026@gmail.com</a> and we will assist you</li>
+    </ul>
+    <p>Revoking consent means you will continue to see ads, but they will be non-personalized.</p>
+  </div>
+
+  <!-- Section 10 -->
+  <div class="section">
+    <h2>10. Contact</h2>
+    <p>If you have any questions or concerns about this Privacy Policy, you may contact us at:</p>
+    <p><a href="mailto:expenseking2026@gmail.com" class="contact-email">expenseking2026@gmail.com</a></p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <a href="help.html">Help Center</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
+  <p>© 2026 ThreeSunnyDev — Bright ideas into reality.</p>
+</footer>
+
+</body>
+</html>

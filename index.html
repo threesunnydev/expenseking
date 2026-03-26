@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExpenseKing — Personal Expense Tracker</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #2a7ce8;
+      --yellow: #f5c518;
+      --dark: #0d1117;
+      --dark2: #161b22;
+      --card: #1c2230;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: #30363d;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f7f8fc;
+      color: #1a1a2e;
+      line-height: 1.7;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--dark);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-brand .e { color: var(--blue); }
+    .nav-brand .k { color: var(--yellow); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--dark);
+      padding: 80px 24px 90px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .hero-title .e { color: var(--blue); }
+    .hero-title .k { color: var(--yellow); }
+
+    .hero-tagline {
+      margin-top: 16px;
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-sub {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--border);
+      letter-spacing: 0.5px;
+    }
+
+    .play-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 36px;
+      background: var(--blue);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 20px rgba(42,124,232,0.35);
+    }
+
+    .play-btn:hover {
+      background: #1a6dd4;
+      transform: translateY(-2px);
+    }
+
+    .play-btn svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .hero-note {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── Features ── */
+    .features {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid #eaeef4;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* ── Privacy Banner ── */
+    .privacy-banner {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 24px;
+      text-align: center;
+    }
+
+    .privacy-banner h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .privacy-banner p {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    .privacy-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      background: #1c2230;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    /* ── Key Features List ── */
+    .key-features {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .key-features ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 32px;
+      text-align: left;
+    }
+
+    .key-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: #444;
+    }
+
+    .key-features li::before {
+      content: '✓';
+      color: var(--blue);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      background: var(--dark);
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      margin: 0 12px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    footer .footer-links { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a class="nav-brand" href="#"><span class="e">Expense</span><span class="k">King</span></a>
+  <div class="nav-links">
+    <a href="help.html">Help</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <h1 class="hero-title">
+    <span class="e">Expense</span><span class="k">King</span>
+  </h1>
+  <p class="hero-tagline">A simple, powerful expense tracker that works completely offline. No account. No cloud. No subscriptions.</p>
+  <p class="hero-sub">100% FREE · ANDROID</p>
+  <a class="play-btn" href="https://play.google.com/store/apps/details?id=com.expenseking.app" target="_blank">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.18 23.5c.34.19.72.25 1.1.18l12.76-11.66L13.27 8.2 3.18 23.5zM20.5 10.5l-2.56-1.48-3.57 3.25 3.57 3.25 2.59-1.5c.74-.43.74-1.1-.03-1.52zM2.01 1.17C1.7 1.5 1.5 2 1.5 2.67v18.66c0 .67.2 1.17.52 1.49l.08.07 10.46-10.46v-.25L2.09 1.1l-.08.07zM13.27 15.8l3.81-3.48-3.81-3.12-3.27 2.99 3.27 3.61z"/>
+    </svg>
+    Get it on Google Play
+  </a>
+  <p class="hero-note">Free to download · Android</p>
+</div>
+
+<!-- Features -->
+<div class="features">
+  <p class="section-label">Features</p>
+  <h2 class="section-title">Everything you need, nothing you don't</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Track Your Expenses</h3>
+      <p>Log daily expenses in seconds. See today's spending at a glance and understand exactly where your money goes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👛</div>
+      <h3>Multiple Wallets</h3>
+      <p>Manage cash, bank accounts, e-wallets, and credit cards all in one place — each with its own running balance.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗂️</div>
+      <h3>Custom Categories</h3>
+      <p>Create categories with your own icons and colors. Set budgets per category and track your pace through the period.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>Insights & Analytics</h3>
+      <p>Visualize spending patterns with charts. Spot monthly trends and understand your habits at a glance.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>Budget Tracking</h3>
+      <p>Set daily, weekly, or monthly budgets per category. See your progress in real time with a clear, color-coded bar.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔔</div>
+      <h3>Spending Reminders</h3>
+      <p>Set daily reminders at times that work for you so you never forget to log an expense.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy Banner -->
+<div class="privacy-banner">
+  <h2>Your data stays on your phone</h2>
+  <p>ExpenseKing stores everything locally — no account required, no data sent to any server. Your financial life is yours alone.</p>
+  <div class="privacy-pills">
+    <span class="pill">✓ No account needed</span>
+    <span class="pill">✓ No cloud storage</span>
+    <span class="pill">✓ Works offline</span>
+    <span class="pill">✓ No subscriptions</span>
+  </div>
+</div>
+
+<!-- Key Features -->
+<div class="key-features">
+  <p class="section-label">What's included</p>
+  <h2 class="section-title">Everything in the free app</h2>
+  <ul>
+    <li>Multiple wallets (cash, bank, e-wallet)</li>
+    <li>Custom categories with icons & colors</li>
+    <li>Daily, weekly & monthly budgets</li>
+    <li>Spending momentum insights</li>
+    <li>Charts & spending history</li>
+    <li>Daily spending reminders</li>
+    <li>Light & dark theme</li>
+    <li>Works 100% offline</li>
+  </ul>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Start tracking for free</h2>
+  <p>No sign-up. No fees. Just open it and go.</p>
+  <a class="play-btn" href="https://play.google.com/store/apps/details?id=com.expenseking.app" target="_blank">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.18 23.5c.34.19.72.25 1.1.18l12.76-11.66L13.27 8.2 3.18 23.5zM20.5 10.5l-2.56-1.48-3.57 3.25 3.57 3.25 2.59-1.5c.74-.43.74-1.1-.03-1.52zM2.01 1.17C1.7 1.5 1.5 2 1.5 2.67v18.66c0 .67.2 1.17.52 1.49l.08.07 10.46-10.46v-.25L2.09 1.1l-.08.07zM13.27 15.8l3.81-3.48-3.81-3.12-3.27 2.99 3.27 3.61z"/>
+    </svg>
+    Get it on Google Play
+  </a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <a href="help.html">Help Center</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
+  <p>© 2026 ThreeSunnyDev — Bright ideas into reality.</p>
+</footer>
+
+</body>
+</html>
