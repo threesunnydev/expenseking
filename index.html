@@ -4,63 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ExpenseKing — Personal Expense Tracker</title>
+  <link rel="stylesheet" href="site.css" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --blue: #2a7ce8;
-      --yellow: #f5c518;
-      --dark: #0d1117;
-      --dark2: #161b22;
-      --card: #1c2230;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --border: #30363d;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f7f8fc;
-      color: #1a1a2e;
-      line-height: 1.7;
-    }
-
-    /* ── Nav ── */
-    nav {
-      background: var(--dark);
-      padding: 14px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-brand {
-      font-size: 1.15rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .nav-brand .e { color: var(--blue); }
-    .nav-brand .k { color: var(--yellow); }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
     /* ── Hero ── */
     .hero {
       background: var(--dark);
@@ -90,35 +35,24 @@
     .hero-sub {
       margin-top: 10px;
       font-size: 0.9rem;
-      color: var(--border);
+      color: var(--muted);
       letter-spacing: 0.5px;
     }
 
     .play-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
+      display: inline-block;
       margin-top: 36px;
-      background: var(--blue);
-      color: white;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 4px 20px rgba(42,124,232,0.35);
+      transition: transform 0.15s, opacity 0.15s;
     }
 
     .play-btn:hover {
-      background: #1a6dd4;
       transform: translateY(-2px);
+      opacity: 0.88;
     }
 
-    .play-btn svg {
-      width: 22px;
-      height: 22px;
-      flex-shrink: 0;
+    .play-btn img {
+      height: 56px;
+      display: block;
     }
 
     .hero-note {
@@ -280,39 +214,11 @@
       color: var(--muted);
       margin-bottom: 28px;
     }
-
-    /* ── Footer ── */
-    footer {
-      background: var(--dark);
-      border-top: 1px solid var(--border);
-      padding: 24px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-      margin: 0 12px;
-      transition: color 0.2s;
-    }
-
-    footer a:hover { color: var(--text); }
-
-    footer .footer-links { margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
-<!-- Nav -->
-<nav>
-  <a class="nav-brand" href="#"><span class="e">Expense</span><span class="k">King</span></a>
-  <div class="nav-links">
-    <a href="help.html">Help</a>
-    <a href="privacy-policy.html">Privacy Policy</a>
-  </div>
-</nav>
+<div id="site-nav"></div>
 
 <!-- Hero -->
 <div class="hero">
@@ -322,10 +228,7 @@
   <p class="hero-tagline">A simple, powerful expense tracker that works completely offline. No account. No cloud. No subscriptions.</p>
   <p class="hero-sub">100% FREE · ANDROID</p>
   <a class="play-btn" href="https://play.google.com/store/apps/details?id=com.expenseking.app" target="_blank">
-    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3.18 23.5c.34.19.72.25 1.1.18l12.76-11.66L13.27 8.2 3.18 23.5zM20.5 10.5l-2.56-1.48-3.57 3.25 3.57 3.25 2.59-1.5c.74-.43.74-1.1-.03-1.52zM2.01 1.17C1.7 1.5 1.5 2 1.5 2.67v18.66c0 .67.2 1.17.52 1.49l.08.07 10.46-10.46v-.25L2.09 1.1l-.08.07zM13.27 15.8l3.81-3.48-3.81-3.12-3.27 2.99 3.27 3.61z"/>
-    </svg>
-    Get it on Google Play
+    <img src="google-play-btn.png" alt="Get it on Google Play" />
   </a>
   <p class="hero-note">Free to download · Android</p>
 </div>
@@ -401,21 +304,12 @@
   <h2>Start tracking for free</h2>
   <p>No sign-up. No fees. Just open it and go.</p>
   <a class="play-btn" href="https://play.google.com/store/apps/details?id=com.expenseking.app" target="_blank">
-    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3.18 23.5c.34.19.72.25 1.1.18l12.76-11.66L13.27 8.2 3.18 23.5zM20.5 10.5l-2.56-1.48-3.57 3.25 3.57 3.25 2.59-1.5c.74-.43.74-1.1-.03-1.52zM2.01 1.17C1.7 1.5 1.5 2 1.5 2.67v18.66c0 .67.2 1.17.52 1.49l.08.07 10.46-10.46v-.25L2.09 1.1l-.08.07zM13.27 15.8l3.81-3.48-3.81-3.12-3.27 2.99 3.27 3.61z"/>
-    </svg>
-    Get it on Google Play
+    <img src="google-play-btn.png" alt="Get it on Google Play" />
   </a>
 </div>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-links">
-    <a href="help.html">Help Center</a>
-    <a href="privacy-policy.html">Privacy Policy</a>
-  </div>
-  <p>© 2026 ThreeSunnyDev — Bright ideas into reality.</p>
-</footer>
+<div id="site-footer"></div>
 
+<script src="components.js"></script>
 </body>
 </html>

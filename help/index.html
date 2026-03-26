@@ -4,107 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ExpenseKing — Help Center</title>
+  <link rel="stylesheet" href="../site.css" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --blue: #2a7ce8;
-      --yellow: #f5c518;
-      --dark: #0d1117;
-      --dark2: #161b22;
-      --card: #1c2230;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --border: #30363d;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f7f8fc;
-      color: #1a1a2e;
-      line-height: 1.7;
-    }
-
-    /* ── Nav ── */
-    nav {
-      background: var(--dark);
-      padding: 14px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-brand {
-      font-size: 1.15rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .nav-brand .e { color: var(--blue); }
-    .nav-brand .k { color: var(--yellow); }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a.active { color: var(--text); }
-
-    /* ── Page Hero ── */
-    .page-hero {
-      background: var(--dark);
-      padding: 56px 24px 60px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .page-hero h1 {
-      font-size: clamp(1.8rem, 5vw, 2.6rem);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--text);
-      line-height: 1.15;
-    }
-
-    .page-hero h1 .e { color: var(--blue); }
-    .page-hero h1 .k { color: var(--yellow); }
-
-    .page-hero p {
-      margin-top: 12px;
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     /* ── Container ── */
     .container {
       max-width: 720px;
       margin: 0 auto;
       padding: 48px 24px 80px;
-    }
-
-    /* ── Section label ── */
-    .section-label {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 6px;
     }
 
     /* ── Help Section Card ── */
@@ -216,7 +122,11 @@
       text-decoration: underline;
     }
 
-    /* ── Contact link ── */
+    .section > p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
     .section a.contact-link {
       color: var(--blue);
       font-weight: 600;
@@ -226,44 +136,11 @@
     .section a.contact-link:hover {
       text-decoration: underline;
     }
-
-    .section > p {
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    /* ── Footer ── */
-    footer {
-      background: var(--dark);
-      border-top: 1px solid var(--border);
-      padding: 24px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-      margin: 0 12px;
-      transition: color 0.2s;
-    }
-
-    footer a:hover { color: var(--text); }
-
-    footer .footer-links { margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
-<!-- Nav -->
-<nav>
-  <a class="nav-brand" href="index.html"><span class="e">Expense</span><span class="k">King</span></a>
-  <div class="nav-links">
-    <a href="help.html" class="active">Help</a>
-    <a href="privacy-policy.html">Privacy Policy</a>
-  </div>
-</nav>
+<div id="site-nav"></div>
 
 <!-- Page Hero -->
 <div class="page-hero">
@@ -397,7 +274,7 @@
     <h2><span class="icon">❓</span> Common Questions</h2>
     <div class="faq-item">
       <h3>Is my data stored online?</h3>
-      <p>Your expense data is stored locally on your device only. No account, no cloud, no personal financial data ever leaves your phone. The app does display ads via Google AdMob, which may collect device and usage information as described in our <a href="https://expenseking2026-cmyk.github.io/expenseking-privacy/">Privacy Policy</a>.</p>
+      <p>Your expense data is stored locally on your device only. No account, no cloud, no personal financial data ever leaves your phone. The app does display ads via Google AdMob, which may collect device and usage information as described in our <a href="../privacy-policy/">Privacy Policy</a>.</p>
     </div>
     <div class="faq-item">
       <h3>What happens if I uninstall the app?</h3>
@@ -417,14 +294,8 @@
 
 </div>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-links">
-    <a href="help.html">Help Center</a>
-    <a href="privacy-policy.html">Privacy Policy</a>
-  </div>
-  <p>© 2026 ThreeSunnyDev — Bright ideas into reality.</p>
-</footer>
+<div id="site-footer"></div>
 
+<script src="../components.js"></script>
 </body>
 </html>
