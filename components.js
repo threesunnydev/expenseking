@@ -25,6 +25,7 @@
   <div class="footer-links">
     <a href="${base}help/">Help Center</a>
     <a href="${base}privacy-policy/">Privacy Policy</a>
+    <a href="${base}terms/">Terms &amp; Conditions</a>
   </div>
   <p>© 2026 ThreeSunnyDev — Bright ideas into reality.</p>
 </footer>`;
